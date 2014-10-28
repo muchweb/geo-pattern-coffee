@@ -22,12 +22,12 @@
   "scripts": {
     "prepublish": "make clean && make"
   },
-  "devDependencies": {
-    "browserify": "~1.16.6",
-    "coffee-script": "^1.8.0",
-    "uglify-js": "^2.4.15"
-  },
   "dependencies": {
     "extend": "^2.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "coffee-script": "^1.8.0",
+    "uglify-js": "^2.4.15"
   }
 }
