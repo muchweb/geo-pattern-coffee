@@ -20,8 +20,7 @@
     "url": "https://github.com/muchweb/geo-pattern-coffee"
   },
   "dependencies": {
-    "extend": "~1.2.1",
-    "sha1": "^1.1.0"
+    "extend": "~1.2.1"
   },
   "scripts": {
       "prepublish": "make clean && make"
