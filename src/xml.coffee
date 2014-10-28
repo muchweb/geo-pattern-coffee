@@ -1,40 +1,40 @@
-"use strict"
-XMLNode = module.exports = (tagName) ->
-  return new XMLNode(tagName)  unless this instanceof XMLNode
-  @tagName = tagName
-  @attributes = Object.create(null)
-  @children = []
-  @lastChild = null
-  this
+'use strict'
 
-XMLNode::appendChild = (child) ->
-  @children.push child
-  @lastChild = child
-  this
+module.exports = class
+	constructor: (tagName) ->
+		return new module.exports(tagName)	unless this instanceof module.exports
+		@tagName = tagName
+		@attributes = Object.create(null)
+		@children = []
+		@lastChild = null
 
-XMLNode::setAttribute = (name, value) ->
-  @attributes[name] = value
-  this
+	appendChild: (child) ->
+		@children.push child
+		@lastChild = child
+		this
 
-XMLNode::toString = ->
-  self = this
-  [
-    "<"
-    self.tagName
-    Object.keys(self.attributes).map((attr) ->
-      [
-        " "
-        attr
-        "=\""
-        self.attributes[attr]
-        "\""
-      ].join ""
-    ).join("")
-    ">"
-    self.children.map((child) ->
-      child.toString()
-    ).join("")
-    "</"
-    self.tagName
-    ">"
-  ].join ""
+	setAttribute: (name, value) ->
+		@attributes[name] = value
+		this
+
+	toString: ->
+		[
+			'<'
+			@tagName
+			(Object.keys @attributes).map((attr) =>
+				[
+					' '
+					attr
+					'=\''
+					@attributes[attr]
+					'\''
+				].join ''
+			).join('')
+			'>'
+			@children.map((child) ->
+				child.toString()
+			).join('')
+			'</'
+			@tagName
+			'>'
+	].join ''
