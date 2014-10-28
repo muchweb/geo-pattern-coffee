@@ -1,6 +1,6 @@
 {
   "name": "geo-pattern-coffee",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Generate beautiful SVG patterns",
   "keywords": [
     "svg",
@@ -23,7 +23,7 @@
     "extend": "~1.2.1"
   },
   "scripts": {
-      "prepublish": "make clean && make"
+    "prepublish": "make clean && make"
   },
   "devDependencies": {
     "browserify": "~1.16.6",
