@@ -1,16 +1,16 @@
-# GeoPattern
+# GeoPattern :coffee: Coffee
 
-This is a JavaScript port of [jasonlong/geo_pattern](https://github.com/jasonlong/geo_pattern) with a [live preview page](http://btmills.github.io/geopattern/geopattern.html) and is derived from the background generator originally used for [GitHub Guides](http://guides.github.com/).
+This is a CoffeeScript port of JavaScript [jasonlong/geo_pattern](https://github.com/jasonlong/geo_pattern) with a [live preview page](http://btmills.github.io/geopattern/geo-pattern-coffee.html) that is derived from the background generator originally used for [GitHub Guides](http://guides.github.com/).
 
 ## Usage
 
 ### Web
 
-Include the [minified script](js/geopattern.min.js). jQuery is optional.
+Include the [minified script](js/geo-pattern-coffee.min.js). jQuery is optional.
 
 ```HTML
 <script src="js/jquery.min.js"></script> <!-- optional -->
-<script src="js/geopattern.min.js"></script>
+<script src="js/geo-pattern-coffee.min.js"></script>
 ```
 
 Use either the `GeoPattern` browser global or the jQuery plugin:
@@ -26,7 +26,7 @@ $('#geopattern').geopattern('GitHub');
 
 For backwards compatibility with the script on the [Guides](http://guides.github.com/), the source hash for generation can be supplied with a `data-title-sha` attribute on the element. If the attribute exists, the generator will ignore the input string and use the supplied hash.
 
-View [`geopattern.html`](geopattern.html) for a complete example.
+View [`geo-pattern-coffee.html`](geo-pattern-coffee.html) for a complete example.
 
 ### Node.js
 

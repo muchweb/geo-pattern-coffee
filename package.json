@@ -1,5 +1,5 @@
 {
-  "name": "geopattern",
+  "name": "geo-pattern-coffee",
   "version": "1.2.1",
   "description": "Generate beautiful SVG patterns",
   "keywords": [
@@ -8,17 +8,16 @@
     "geometric",
     "background"
   ],
-  "homepage": "http://btmills.github.io/geopattern/geopattern.html",
-  "bugs": "https://github.com/btmills/geopattern/issues",
   "license": "MIT",
   "contributors": [
     "Brandon Mills",
-    "Jason Long"
+    "Jason Long",
+    "muchweb"
   ],
-  "main": "geopattern.js",
+  "main": "lib/geo-pattern-coffee.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/btmills/geopattern"
+    "url": "https://github.com/muchweb/geo-pattern-coffee"
   },
   "dependencies": {
     "extend": "~1.2.1",
