@@ -1,6 +1,6 @@
 # GeoPattern :coffee: Coffee [![Dependency Status](https://gemnasium.com/muchweb/geo-pattern-coffee.svg)](https://gemnasium.com/muchweb/geo-pattern-coffee) [![NPM version](https://badge.fury.io/js/geo-pattern-coffee.svg)](http://badge.fury.io/js/geo-pattern-coffee)
 
-This is a CoffeeScript port of JavaScript [jasonlong/geo_pattern](https://github.com/jasonlong/geo_pattern) with a [live preview page](http://btmills.github.io/geopattern/geo-pattern-coffee.html) that is derived from the background generator originally used for [GitHub Guides](http://guides.github.com/).
+This is a CoffeeScript port of JavaScript port [btmills/geopattern](https://github.com/btmills/geopattern) of Ruby project [jasonlong/geo_pattern](https://github.com/jasonlong/geo_pattern) that is derived from the background generator originally used for [GitHub Guides](http://guides.github.com/).
 
 ## Usage
 
