@@ -25,9 +25,9 @@ module.exports = class
 				[
 					' '
 					attr
-					'=\''
+					'="'
 					@attributes[attr]
-					'\''
+					'"'
 				].join ''
 			).join('')
 			'>'

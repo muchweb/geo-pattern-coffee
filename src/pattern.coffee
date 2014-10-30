@@ -4,13 +4,11 @@ color = require './color'
 color2 = require 'color'
 SVG = require './svg'
 
-# Helpers
-
 ###*
-Extract a substring from a hex string and parse it as an integer
-@param {string} hash - Source hex string
-@param {number} index - Start index of substring
-@param {number} [length] - Length of substring. Defaults to 1.
+	Extract a substring from a hex string and parse it as an integer
+	@param {string} hash - Source hex string
+	@param {number} index - Start index of substring
+	@param {number} [length] - Length of substring. Defaults to 1.
 ###
 hexVal = (hash, index, len) ->
 	parseInt hash.substr(index, len or 1), 16
@@ -24,8 +22,10 @@ map = (value, vMin, vMax, dMin, dMax) ->
 	vRange = vMax - vMin
 	dRange = dMax - dMin
 	(vValue - vMin) * dRange / vRange + dMin
+
 fillColor = (val) ->
 	(if (val % 2 is 0) then FILL_COLOR_LIGHT else FILL_COLOR_DARK)
+
 fillOpacity = (val) ->
 	map val, 0, 15, OPACITY_MIN, OPACITY_MAX
 
@@ -49,12 +49,10 @@ buildHexagonShape = (sideLength) ->
 		2 * b
 		0
 		b
-	].join ","
+	].join ','
 
 # Add an extra one at top-right, for tiling.
-
 # Add an extra row at the end that matches the first row, for tiling.
-
 # Add an extra one at bottom-right, for tiling.
 buildChevronShape = (width, height) ->
 	e = height * 0.66
@@ -84,8 +82,7 @@ buildChevronShape = (width, height) ->
 			height - e
 		]
 	].map (x) ->
-		x.join ","
-
+		x.join ','
 
 # Add an extra row at the end that matches the first row, for tiling.
 buildPlusShape = (squareSize) ->
@@ -145,7 +142,7 @@ buildOctogonShape = (squareSize) ->
 		c
 		c
 		0
-	].join ","
+	].join ','
 
 # Add an extra one at top-right, for tiling.
 buildTriangleShape = (sideLength, height) ->
@@ -159,7 +156,7 @@ buildTriangleShape = (sideLength, height) ->
 		height
 		halfWidth
 		0
-	].join ","
+	].join ','
 
 # Add an extra one at top-right, for tiling.
 buildDiamondShape = (width, height) ->
@@ -172,7 +169,7 @@ buildDiamondShape = (width, height) ->
 		height
 		0
 		height / 2
-	].join ","
+	].join ','
 
 # Add an extra one at top-right, for tiling.
 
@@ -189,11 +186,13 @@ buildRightTriangleShape = (sideLength) ->
 		sideLength
 		0
 		0
-	].join ","
+	].join ','
+
+
 drawInnerMosaicTile = (svg, x, y, triangleSize, vals) ->
-	triangle = buildRightTriangleShape(triangleSize)
-	opacity = fillOpacity(vals[0])
-	fill = fillColor(vals[0])
+	triangle = buildRightTriangleShape triangleSize
+	opacity = fillOpacity vals[0]
+	fill = fillColor vals[0]
 	styles =
 		stroke: STROKE_COLOR
 		"stroke-opacity": STROKE_OPACITY
@@ -393,41 +392,35 @@ Pattern::generateBackground = ->
 Pattern::generatePattern = ->
 	generator = @opts.generator
 	if generator
-		throw new Error("The generator " + generator + " does not exist.")  if PATTERNS.indexOf(generator) < 0
-	else
-		generator = PATTERNS[hexVal(@hash, 20)]
-	this["geo" + generator.slice(0, 1).toUpperCase() + generator.slice(1)]()
+		throw new Error("The generator #{generator} does not exist.") if (PATTERNS.indexOf generator) < 0
+
+	generator = PATTERNS[hexVal(@hash, 20)]
+	this['geo' + (generator.slice 0, 1).toUpperCase() + (generator.slice 1)]()
 
 Pattern::geoHexagons = ->
-	scale = hexVal(@hash, 0)
-	sideLength = map(scale, 0, 15, 8, 60)
-	hexHeight = sideLength * Math.sqrt(3)
+	scale = hexVal @hash, 0
+	sideLength = map scale, 0, 15, 8, 60
+	hexHeight = sideLength * (Math.sqrt 3)
 	hexWidth = sideLength * 2
-	hex = buildHexagonShape(sideLength)
-	dy = undefined
-	fill = undefined
-	i = undefined
-	opacity = undefined
-	styles = undefined
-	val = undefined
-	x = undefined
-	y = undefined
+	hex = buildHexagonShape sideLength
 	@svg.setWidth hexWidth * 3 + sideLength * 3
 	@svg.setHeight hexHeight * 6
 	i = 0
 	y = 0
+
 	while y < 6
 		x = 0
+
 		while x < 6
-			val = hexVal(@hash, i)
+			val = hexVal @hash, i
 			dy = (if x % 2 is 0 then y * hexHeight else y * hexHeight + hexHeight / 2)
-			opacity = fillOpacity(val)
-			fill = fillColor(val)
+			opacity = fillOpacity val
+			fill = fillColor val
 			styles =
 				fill: fill
-				"fill-opacity": opacity
+				'fill-opacity': opacity
 				stroke: STROKE_COLOR
-				"stroke-opacity": STROKE_OPACITY
+				'stroke-opacity': STROKE_OPACITY
 
 			@svg.polyline(hex, styles).transform translate: [
 				x * sideLength * 1.5 - hexWidth / 2
@@ -452,7 +445,6 @@ Pattern::geoHexagons = ->
 			i++
 			x++
 		y++
-	return
 
 Pattern::geoSineWaves = ->
 	period = Math.floor(map(hexVal(@hash, 0), 0, 15, 100, 400))
