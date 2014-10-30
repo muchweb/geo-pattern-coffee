@@ -23,6 +23,7 @@
     "prepublish": "make clean && make"
   },
   "dependencies": {
+    "color": "^0.7.3",
     "extend": "^2.0.0"
   },
   "devDependencies": {
