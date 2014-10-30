@@ -47,7 +47,6 @@ SVG = module.exports = class
 		@svg.toString()
 
 	rect: (x, y, width, height, args) ->
-
 		# Accept array first argument
 		if Array.isArray x
 			x.forEach (a) =>
@@ -83,7 +82,6 @@ SVG = module.exports = class
 		this
 
 	polyline: (str, args) ->
-
 		# Accept array first argument
 		if Array.isArray(str)
 			str.forEach (s) =>
@@ -97,7 +95,6 @@ SVG = module.exports = class
 			points: str
 		, args)
 		this
-
 
 	# group and context are hacks
 	group: (args) ->
