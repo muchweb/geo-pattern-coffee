@@ -2,7 +2,20 @@
 
 This is a CoffeeScript port of JavaScript port [btmills/geopattern](https://github.com/btmills/geopattern) of Ruby project [jasonlong/geo_pattern](https://github.com/jasonlong/geo_pattern) that is derived from the background generator originally used for [GitHub Guides](http://guides.github.com/).
 
+## Installation & Building
+
+```
+npm install
+make
+```
+
 ## Usage
+
+### Demo page
+
+```
+xdg-open docs/geo-pattern-coffee.html
+```
 
 ### Web
 
@@ -26,7 +39,7 @@ $('#geopattern').geopattern('GitHub');
 
 For backwards compatibility with the script on the [Guides](http://guides.github.com/), the source hash for generation can be supplied with a `data-title-sha` attribute on the element. If the attribute exists, the generator will ignore the input string and use the supplied hash.
 
-View [`geo-pattern-coffee.html`](geo-pattern-coffee.html) for a complete example.
+View [`docs/geo-pattern-coffee.html`](docs/geo-pattern-coffee.html) for a complete example.
 
 ### Node.js
 
