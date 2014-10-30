@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "0.10"
+deploy:
+  provider: npm
+  api_key:
+    secure: eFBWRJMFBld5EpEwQ/BzTvk9s7nyomoQoE6Wz25at0G/+IQHZAOohzLj7AV37uAUCnbx2o6Ls8KOmnmxEeCsdg1w3rl8heeon5qerYJgHIUdnUdiZGcDTMczh0LQAt6VqaqiFeRout5jnoV8iBn0qbpSdczz3x+hR6eFNcmNx9M=
+  on:
+    tags: true

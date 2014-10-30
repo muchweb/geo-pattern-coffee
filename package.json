@@ -14,7 +14,7 @@
     "Jason Long",
     "muchweb"
   ],
-  "main": "lib/geo-pattern-coffee.js",
+  "main": "lib/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/muchweb/geo-pattern-coffee"
@@ -24,11 +24,13 @@
   },
   "dependencies": {
     "color": "^0.7.3",
-    "extend": "^2.0.0"
+    "extend": "^2.0.0",
+    "sha1": "^1.1.0"
   },
   "devDependencies": {
     "browserify": "^6.2.0",
     "coffee-script": "^1.8.0",
+    "nodeunit": "^0.9.0",
     "uglify-js": "^2.4.15"
   }
 }
