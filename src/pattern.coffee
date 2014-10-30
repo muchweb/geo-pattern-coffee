@@ -1,6 +1,5 @@
 'use strict'
 extend = require 'extend'
-color = require './color'
 color2 = require 'color'
 SVG = require './svg'
 
@@ -372,7 +371,7 @@ Pattern::toDataUrl = ->
 
 Pattern::generateBackground = ->
 	if @opts.color
-		rgb = (color2 @opts.color).rgb()
+		rgb = (color2 @opts.color).rgbString()
 	else
 		hueOffset = map (hexVal @hash, 14, 3), 0, 4095, 0, 359
 		satOffset = hexVal @hash, 17
@@ -384,10 +383,10 @@ Pattern::generateBackground = ->
 		else
 			baseColor.s = Math.max 0, baseColor.s - satOffset
 
-		rgb = (color2 baseColor).rgb()
+		rgb = (color2 baseColor).rgbString()
 
 	@svg.rect 0, 0, '100%', '100%',
-		fill: color.rgb2rgbString rgb
+		fill: rgb
 
 Pattern::generatePattern = ->
 	generator = @opts.generator
