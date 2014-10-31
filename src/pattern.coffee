@@ -102,23 +102,14 @@ buildPlusShape = (squareSize) ->
 	]
 
 # Add an extra column on the right for tiling.
-
 # Add an extra row on the bottom that matches the first row, for tiling
-
 # Add an extra one at top-right and bottom-right, for tiling
-
 # Add an extra column on the right for tiling.
-
 # // Add an extra row on the bottom that matches the first row, for tiling.
-
 # These can hang off the bottom, so put a row at the top for tiling.
-
 # Add an extra one at top-right and bottom-right, for tiling
-
 # Add an extra one at top-right, for tiling.
-
 # // Add an extra row at the end that matches the first row, for tiling.
-
 # // Add an extra one at bottom-right, for tiling.
 buildOctogonShape = (squareSize) ->
 	s = squareSize
@@ -172,9 +163,7 @@ buildDiamondShape = (width, height) ->
 	].join ','
 
 # Add an extra one at top-right, for tiling.
-
 # Add an extra row at the end that matches the first row, for tiling.
-
 # Add an extra one at bottom-right, for tiling.
 buildRightTriangleShape = (sideLength) ->
 	[
@@ -188,15 +177,14 @@ buildRightTriangleShape = (sideLength) ->
 		0
 	].join ','
 
-
 drawInnerMosaicTile = (svg, x, y, triangleSize, vals) ->
 	triangle = buildRightTriangleShape triangleSize
 	opacity = fillOpacity vals[0]
 	fill = fillColor vals[0]
 	styles =
 		stroke: STROKE_COLOR
-		"stroke-opacity": STROKE_OPACITY
-		"fill-opacity": opacity
+		'stroke-opacity': STROKE_OPACITY
+		'fill-opacity': opacity
 		fill: fill
 
 	svg.polyline(triangle, styles).transform
@@ -223,8 +211,8 @@ drawInnerMosaicTile = (svg, x, y, triangleSize, vals) ->
 	fill = fillColor(vals[1])
 	styles =
 		stroke: STROKE_COLOR
-		"stroke-opacity": STROKE_OPACITY
-		"fill-opacity": opacity
+		'stroke-opacity': STROKE_OPACITY
+		'fill-opacity': opacity
 		fill: fill
 
 	svg.polyline(triangle, styles).transform
@@ -254,8 +242,8 @@ drawOuterMosaicTile = (svg, x, y, triangleSize, val) ->
 	triangle = buildRightTriangleShape(triangleSize)
 	styles =
 		stroke: STROKE_COLOR
-		"stroke-opacity": STROKE_OPACITY
-		"fill-opacity": opacity
+		'stroke-opacity': STROKE_OPACITY
+		'fill-opacity': opacity
 		fill: fill
 
 	svg.polyline(triangle, styles).transform
@@ -314,35 +302,35 @@ buildRotatedTriangleShape = (sideLength, triangleWidth) ->
 		sideLength
 		0
 		0
-	].join ","
+	].join ','
 
-DEFAULTS = baseColor: "#933c3c"
+DEFAULTS = baseColor: '#933c3c'
 PATTERNS = [
-	"octogons"
-	"overlappingCircles"
-	"plusSigns"
-	"xes"
-	"sineWaves"
-	"hexagons"
-	"overlappingRings"
-	"plaid"
-	"triangles"
-	"squares"
-	"concentricCircles"
-	"diamonds"
-	"tessellation"
-	"nestedSquares"
-	"mosaicSquares"
-	"chevrons"
+	'octogons'
+	'overlappingCircles'
+	'plusSigns'
+	'xes'
+	'sineWaves'
+	'hexagons'
+	'overlappingRings'
+	'plaid'
+	'triangles'
+	'squares'
+	'concentricCircles'
+	'diamonds'
+	'tessellation'
+	'nestedSquares'
+	'mosaicSquares'
+	'chevrons'
 ]
-FILL_COLOR_DARK = "#222"
-FILL_COLOR_LIGHT = "#ddd"
-STROKE_COLOR = "#000"
+FILL_COLOR_DARK = '#222'
+FILL_COLOR_LIGHT = '#ddd'
+STROKE_COLOR = '#000'
 STROKE_OPACITY = 0.02
 OPACITY_MIN = 0.02
 OPACITY_MAX = 0.15
 Pattern = module.exports = (string, options) ->
-	@opts = extend({}, DEFAULTS, options)
+	@opts = extend {}, DEFAULTS, options
 	@hash = options.hash or SHA1(string)
 	@svg = new SVG()
 	@generateBackground()
@@ -357,15 +345,13 @@ Pattern::toString = ->
 
 Pattern::toBase64 = ->
 	str = @toSvg()
-	b64 = undefined
-	if typeof window isnt "undefined" and typeof window.btoa is "function"
-		b64 = window.btoa(str)
+	if window? and typeof window.btoa is 'function'
+		window.btoa str
 	else
-		b64 = new Buffer(str).toString("base64")
-	b64
+		(new Buffer str).toString 'base64'
 
 Pattern::toDataUri = ->
-	"data:image/svg+xml;base64," + @toBase64()
+	'data:image/svg+xml;base64,' + @toBase64()
 
 Pattern::toDataUrl = ->
 	"url(\"" + @toDataUri() + "\")"
@@ -466,10 +452,10 @@ Pattern::geoSineWaves = ->
 		fill = fillColor(val)
 		xOffset = period / 4 * 0.7
 		styles =
-			fill: "none"
+			fill: 'none'
 			stroke: fill
 			opacity: opacity
-			"stroke-width": "" + waveWidth + "px"
+			'stroke-width': "#{waveWidth}px"
 
 		str = "M0 " + amplitude + " C " + xOffset + " 0, " + (period / 2 - xOffset) + " 0, " + (period / 2) + " " + amplitude + " S " + (period - xOffset) + " " + (amplitude * 2) + ", " + period + " " + amplitude + " S " + (period * 1.5 - xOffset) + " 0, " + (period * 1.5) + ", " + amplitude
 		@svg.path(str, styles).transform translate: [

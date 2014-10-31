@@ -2,7 +2,7 @@
 
 module.exports = class
 	constructor: (tagName) ->
-		return new module.exports(tagName)	unless this instanceof module.exports
+		return new module.exports(tagName) unless this instanceof module.exports
 		@tagName = tagName
 		@attributes = Object.create(null)
 		@children = []
@@ -29,11 +29,11 @@ module.exports = class
 					@attributes[attr]
 					'"'
 				].join ''
-			).join('')
+			).join ''
 			'>'
 			@children.map((child) ->
 				child.toString()
-			).join('')
+			).join ''
 			'</'
 			@tagName
 			'>'
